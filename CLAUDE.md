@@ -31,7 +31,7 @@ See `PRODUCT.md` (users, positioning, anti-references, design principles) and `D
 - **No client-side framework** (React SPA, etc.) for content pages — this is a separate, simpler stack from the `admin/` booking tool (Next.js), and intentionally so; they only share the visual design system, not the codebase.
 - **Fonts:** `@fontsource/cormorant-garamond`, `@fontsource/quicksand`.
 - **Sitemap:** `@astrojs/sitemap`, configured in `astro.config.mjs` to exclude `/client-login/` and the three reserved location-page slugs (see below) from the generated sitemap.
-- **Domain:** `www.fableandframestudios.com` (plural "studios") — matches `astro.config.mjs`'s `site:`.
+- **Domain:** `www.fableandframestudio.com` (singular "studio" — corrected 2026-07-11; the original brief incorrectly assumed plural "studios" and this propagated through `astro.config.mjs`, `robots.txt`, and Vercel domain setup until caught) — matches `astro.config.mjs`'s `site:`.
 
 ## Site architecture
 
@@ -90,7 +90,7 @@ The site is built and matches the architecture above: all core pages exist with 
 - Whether `LocalBusiness`/`Photographer` JSON-LD schema (`src/lib/schema.ts`) validates against real testing tools, and whether `aggregateRating` is still correctly stubbed rather than fabricated.
 - The contact form's actual submission backend (brief calls for "a form-handling service or serverless function" — not yet confirmed which one is wired up, or if it's still a stub).
 - **No git repository exists for this project yet** (unlike `admin/`, which is its own repo pushed to GitHub) — there's no commit history or remote to check changes against. Worth setting up before this diverges further from what's deployed.
-- No `vercel.json`/`netlify.toml` is committed, so the actual deploy target/host for `www.fableandframestudios.com` hasn't been confirmed from this repo alone.
+- No `vercel.json`/`netlify.toml` is committed, so the actual deploy target/host for `www.fableandframestudio.com` hasn't been confirmed from this repo alone.
 
 A `dist/` build output and `.astro` cache exist from at least one local build, but that doesn't confirm what's actually live at the production domain.
 

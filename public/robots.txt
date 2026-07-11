@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /client-login/
 
-Sitemap: https://www.fableandframestudios.com/sitemap-index.xml
+Sitemap: https://www.fableandframestudio.com/sitemap-index.xml
