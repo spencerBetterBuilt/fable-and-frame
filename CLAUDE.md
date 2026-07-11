@@ -85,14 +85,28 @@ If something outside this scope seems tempting to add "while you're in there," f
 
 The site is built and matches the architecture above: all core pages exist with real copy (no lorem ipsum), two journal posts are seeded (`elopement-or-wedding-how-to-choose.md`, `getting-married-near-montgomery-tx-venue-guide.md`), and the three location-page slugs are reserved as 301-redirect stubs exactly per the original brief.
 
-**Not yet confirmed/verified in this pass** (this file was just established — the below is inherited status, not freshly re-audited line-by-line):
-- Whether the sub-2.5s mobile LCP target has been measured against a real Lighthouse/PageSpeed run.
-- Whether `LocalBusiness`/`Photographer` JSON-LD schema (`src/lib/schema.ts`) validates against real testing tools, and whether `aggregateRating` is still correctly stubbed rather than fabricated.
-- The contact form's actual submission backend (brief calls for "a form-handling service or serverless function" — not yet confirmed which one is wired up, or if it's still a stub).
-- **No git repository exists for this project yet** (unlike `admin/`, which is its own repo pushed to GitHub) — there's no commit history or remote to check changes against. Worth setting up before this diverges further from what's deployed.
-- No `vercel.json`/`netlify.toml` is committed, so the actual deploy target/host for `www.fableandframestudio.com` hasn't been confirmed from this repo alone.
+### 2026-07-11 — Site went live
 
-A `dist/` build output and `.astro` cache exist from at least one local build, but that doesn't confirm what's actually live at the production domain.
+- **Git repo initialized** and pushed to GitHub (`spencerBetterBuilt/fable-and-frame`, public — matches `admin/`'s convention).
+- **Deployed to Vercel** (team `better-built1`, project `fable-and-frame`), connected to the GitHub repo for auto-deploy on push. `vercel.json` added for true HTTP 301s on the three reserved location slugs (Astro's static `Astro.redirect()` alone only produces a meta-refresh, not a real 301).
+- **Domain corrected: singular, not plural.** The original brief incorrectly assumed `fableandframestudios.com` (plural) — the actual registered domain is `fableandframestudio.com` (singular "studio"), confirmed against the live pre-existing site, the business email, and the Mailchimp audience name. Fixed in `astro.config.mjs`, `robots.txt`, and this file; wrong Vercel domain entries removed and replaced. Domain is Cloudflare-DNS-managed; DNS now points at Vercel (CNAME `@` and `www` → `c0abed4b8398d2c0.vercel-dns-017.com`, unproxied) and is live and verified.
+- **Contact form wired to Formspree** (Projects/CLI-based, not the classic dashboard form — see `formspree.json`), with a real email-notification action to `mady@fableandframestudio.com`. Verified end-to-end with a live test submission (200, `{"ok":true}`). A hidden `tags` field pre-wires Mailchimp tagging into the existing "Main Contact Form" segment, but the Mailchimp action itself is **not** active — Formspree's current plan doesn't support the Mailchimp plugin, and Spencer chose to defer that decision rather than upgrade now.
+- **Real pricing added** to all four service tiers: Weddings $3,000, Family $350 (pulled directly from the old live site's pricing page), Elopements $400, Portraits $275 (confirmed directly with Spencer, since the old site's categories — Wedding/Engagement/Family — don't map 1:1 onto the new site's four tiers; "Engagement" ≠ "Elopement" conceptually).
+- **Fixed literal placeholder text that was live in production**: Footer and `schema.ts` were rendering `[PLACEHOLDER EMAIL ADDRESS]`/`[PLACEHOLDER PHONE NUMBER]` verbatim. Now real: `mady@fableandframestudio.com`, `(281) 907-3327`.
+- **`/client-login/` rewritten**: it previously linked to a guessed, unconfirmed Pixieset subdomain. There's no single client-portal URL yet (each shoot gets its own individual gallery link) — copy now honestly points people to `/contact/` instead of a fabricated link. Pixieset does support a "Homepage" client-portal feature at `<username>.pixieset.com` that could replace this with a real link — unconfirmed whether Madyson has it toggled on or what her username is.
+- **GA4 added** site-wide via `gtag.js` in `BaseLayout.astro` (`G-M3JX8FX4BT`), loaded `async`/`is:inline` so it doesn't block the LCP path.
+- **Meta descriptions tightened** on 4 pages (home/about/contact/services) that were running 168–186 characters down to the ~150–160 target.
+- **Open naming question, not yet resolved:** the old live site's actual page title and footer copyright both read "Fable and Frame **Studio**" (singular), not "Studios" — matching the now-confirmed singular domain. This new site's brand references (page titles, `schema.ts` business `name`, footer copyright, `PRODUCT.md`/`DESIGN.md`) are all still "Fable & Frame **Studios**" (plural). Only the *domain* was corrected this session per explicit instruction — whether the brand name itself should also be singular has not been asked or resolved. Worth confirming with Spencer before assuming either way.
+
+**Not yet confirmed/verified**:
+- Whether the sub-2.5s mobile LCP target has been measured against a real Lighthouse/PageSpeed run.
+- Whether `LocalBusiness`/`Photographer` JSON-LD schema (`src/lib/schema.ts`) validates against real schema-testing tools, and whether `aggregateRating` is still correctly stubbed rather than fabricated.
+- Whether the brand name itself is singular "Studio" or plural "Studios" (see note above) — domain is settled, display name is not.
+- Real photography — most portfolio/hero/tier slots are still explicitly-labeled placeholders. Full shot list with dimensions/content briefs lives in `IMAGE-SHOTLIST.md`.
+- Real testimonials — every `Testimonial` instance still renders an explicit "pending" placeholder; no real client quotes exist yet.
+- Pixieset client-portal username/toggle (see above) — needed before `/client-login/` can link anywhere real.
+- Mailchimp — deliberately deferred by Spencer; plan upgrade needed before the existing hidden `tags` field does anything.
+- Fast-follow, not yet started: Spencer wants subtle, premium Webflow-style micro-animations/interactions added in a future pass — explicitly flagged as a later polish task, not part of this launch.
 
 ---
 
