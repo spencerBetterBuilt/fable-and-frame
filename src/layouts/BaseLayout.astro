@@ -27,6 +27,15 @@ const { title, description, transparentNav = false, ogImagePath, noindex = false
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <Seo title={title} description={description} ogImagePath={ogImagePath} noindex={noindex} />
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-M3JX8FX4BT"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-M3JX8FX4BT');
+    </script>
   </head>
   <body>
     <Nav transparentOverHero={transparentNav} />
