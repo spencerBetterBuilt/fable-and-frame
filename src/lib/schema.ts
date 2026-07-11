@@ -6,9 +6,8 @@ export function localBusinessSchema(siteUrl: string) {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'Photographer'],
     name: 'Fable & Frame Studios',
-    // PLACEHOLDER — replace with the real business phone/email/address once confirmed.
-    telephone: '[PLACEHOLDER PHONE NUMBER]',
-    email: '[PLACEHOLDER EMAIL ADDRESS]',
+    telephone: '+1-281-907-3327',
+    email: 'mady@fableandframestudio.com',
     url: siteUrl,
     image: `${siteUrl}/images/fable-and-frame-og.jpg`,
     description:

@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// PLACEHOLDER — replace with the real Pixieset client gallery subdomain once confirmed.
-const pixiesetUrl = 'https://fableandframestudios.pixieset.com';
+// Each shoot gets its own individual Pixieset gallery link (sent directly to the client) rather
+// than a single shared login URL — there's no confirmed general portal link to send people to yet.
+// If Madyson turns on Pixieset's "Homepage" client-portal feature, this can link there directly;
+// see IMAGE-SHOTLIST.md/session notes for the follow-up.
 ---
 
 <BaseLayout
   title="Client Login | Fable & Frame Studios"
-  description="Access your private Fable & Frame Studios client gallery, hosted on Pixieset."
+  description="Find your private Fable & Frame Studios client gallery, hosted on Pixieset."
   noindex
 >
   <section class="section login">
@@ -15,14 +17,12 @@ const pixiesetUrl = 'https://fableandframestudios.pixieset.com';
       <p class="label login__eyebrow">Client Login</p>
       <h1>Your Gallery Lives on Pixieset</h1>
       <p class="login__body">
-        Client galleries, proofing, and downloads are hosted on Pixieset, not on this site. Use the
-        link below to log in and view your photos.
+        Client galleries, proofing, and downloads are hosted on Pixieset, not on this site. Your
+        gallery link was sent directly to you by email after your session — check your inbox (and
+        spam folder) for a message from Pixieset.
       </p>
-      <a class="cta" href={pixiesetUrl} rel="noopener">Go to your client gallery</a>
-      <p class="login__help">
-        Trouble finding your gallery link? Reach out at <a href="/contact/">/contact/</a> and we'll
-        resend it.
-      </p>
+      <a class="cta" href="/contact/">Can't find your link? Reach out</a>
+      <p class="login__help">Include your name and event date and we'll resend it.</p>
     </div>
   </section>
 </BaseLayout>
