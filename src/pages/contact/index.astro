@@ -56,11 +56,12 @@ const steps = [
       </div>
 
       <!--
-        Form-handling: wired to Formspree's static-form endpoint (no server required).
-        Replace YOUR_FORM_ID with a real Formspree form ID before launch — sign up free at
-        https://formspree.io, create a form, and swap the action URL below.
+        Form-handling: Formspree Project form, managed via formspree.json + the Formspree CLI
+        (see git history). The "tags" hidden field pre-wires Mailchimp tagging into the existing
+        "Main Contact Form" segment — inert until the Mailchimp plan upgrade lands.
       -->
-      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="form" action="https://formspree.io/p/3043678165512748159/f/contact" method="POST">
+        <input type="hidden" name="tags" value="Main Contact Form" />
         <div class="form__row">
           <label for="name" class="label">Name</label>
           <input id="name" name="name" type="text" required autocomplete="name" />

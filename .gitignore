@@ -10,3 +10,5 @@ admin/
 
 # Raw/unprocessed source photos — optimized derivatives live in src/assets/photos
 Getaway Car Wedding.JPG
+.vercel
+.env*
