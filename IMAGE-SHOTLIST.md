@@ -26,7 +26,7 @@ Two real photos already exist in the repo (`getaway-car-wedding.jpg`, `madyson-w
 
 ## Portfolio (`/portfolio/`)
 
-One tile already uses the real wedding hero photo. Nine more are placeholders:
+One tile already uses the real wedding hero photo. Nine more are placeholders. The "portrait (4:5)" labels below are a floor, not exact — the actual grid cell runs closer to square on most screens, so shoot loose rather than tight-cropped.
 
 | # | Category | Shape | Content |
 |---|----------|-------|---------|
@@ -36,7 +36,7 @@ One tile already uses the real wedding hero photo. Nine more are placeholders:
 | 8 | Elopements | Portrait (4:5), min 1600×2000 | Elopement close moment. |
 | 9 | Elopements | Portrait (4:5), min 1600×2000 | Elopement close moment, second. |
 | 10 | Portraits | Portrait (4:5), min 1600×2000 | Portrait session moment. |
-| 11 | Portraits | *Flagged below* | Portrait session moment — this tile spans a 2×2 grid cell (roughly square on-screen) even though the code currently requests a 4:5 portrait crop for it. Shoot with enough width/headroom that it works cropped closer to square; I'll square up the aspect-ratio mismatch in code separately. |
+| 11 | Portraits | Near-square to landscape (varies by screen size — see note) | Portrait session moment, this is the "hero" tile of the grid (spans a 2×2 cell). Shoot loose rather than a tight head-to-waist crop — this tile's actual on-screen shape shifts from roughly square on desktop to noticeably taller on mobile, so it needs margin on all sides to survive being cropped differently at different widths. |
 | 12 | Family | Wide (16:9), min 1920×1080 | Family session, wide/environmental. |
 | 13 | Family | Portrait (4:5), min 1600×2000 | Family session, closer moment. |
 
