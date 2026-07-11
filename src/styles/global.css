@@ -1,0 +1,191 @@
+/* Design tokens — sourced from DESIGN.md. Do not redefine values elsewhere; extend this file instead. */
+
+:root {
+  /* Colors — Full Palette strategy, muted/filmic (see DESIGN.md §2) */
+  --color-ivory: oklch(97% 0.006 85);
+  --color-ivory-deep: oklch(94% 0.008 85);
+  --color-ink: oklch(24% 0.01 85);
+  --color-sage: oklch(72% 0.045 150);
+  --color-sage-deep: oklch(38% 0.035 150);
+  --color-dusty-blue: oklch(68% 0.04 240);
+  --color-dusty-blue-deep: oklch(32% 0.03 240);
+  --color-cinematic-dark: oklch(16% 0.012 250);
+  --color-cinematic-dark-deep: oklch(10% 0.01 250);
+  --color-ivory-on-dark: oklch(95% 0.008 85);
+
+  /* Typography (DESIGN.md §3) */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Quicksand", system-ui, sans-serif;
+
+  --text-display: clamp(2.75rem, 6vw, 5rem);
+  --text-headline: clamp(1.75rem, 3.5vw, 2.75rem);
+  --text-title: 1.125rem;
+  --text-body: 1rem;
+  --text-label: 0.8rem;
+
+  --leading-display: 1.05;
+  --leading-headline: 1.15;
+  --leading-title: 1.4;
+  --leading-body: 1.65;
+  --leading-label: 1.4;
+
+  --tracking-label: 0.08em;
+
+  /* Spacing (DESIGN.md frontmatter) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 64px;
+  --space-xl: 128px;
+
+  /* Rounded (DESIGN.md frontmatter) — rectangular by default */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+
+  --measure: 70ch;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ivory);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-blend-mode: multiply;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-ink);
+}
+
+h1 {
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+}
+
+h2 {
+  font-size: var(--text-headline);
+  font-weight: 500;
+  line-height: var(--leading-headline);
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: var(--text-title);
+  font-weight: 600;
+  line-height: var(--leading-title);
+}
+
+p {
+  margin: 0;
+  max-width: var(--measure);
+}
+
+a {
+  color: inherit;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.section {
+  position: relative;
+  padding: var(--space-xl) var(--space-md);
+  background-color: var(--color-ivory);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-blend-mode: multiply;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: var(--space-lg) var(--space-sm);
+  }
+}
+
+.section--dark {
+  background-color: var(--color-cinematic-dark);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+  color: var(--color-ivory-on-dark);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3 {
+  color: var(--color-ivory-on-dark);
+}
+
+.wrap {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/* Full-bleed breakout for image-driven sections — see DESIGN.md "Full-Bleed Image Section" */
+.breakout {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* Focus visibility is never removed — see DESIGN.md Inputs/Fields */
+:focus-visible {
+  outline: 2px solid var(--color-dusty-blue-deep);
+  outline-offset: 3px;
+}

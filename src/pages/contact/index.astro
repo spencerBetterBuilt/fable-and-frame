@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Testimonial from '../../components/Testimonial.astro';
+
+const steps = [
+  { title: 'You reach out', body: 'Send the form below with your date and event type.' },
+  { title: 'I reply within 24 hours', body: 'Personally — usually with a couple of questions.' },
+  { title: 'A short discovery call', body: "We talk through your day and whether we're a fit." },
+  { title: 'Proposal &amp; contract', body: 'Clear terms, no surprise line items.' },
+  { title: "You're booked", body: 'Your date is held and we start planning.' },
+];
+---
+
+<BaseLayout
+  title="Contact Fable & Frame Studios | Wedding Photographer in Montgomery, TX"
+  description="Reach out to book Fable & Frame Studios for your wedding, elopement, or portrait session in Montgomery, The Woodlands, Conroe, or Houston, TX. We reply within 24 hours."
+>
+  <PageHero
+    placeholderLabel="Contact hero photo — pending"
+    eyebrow="Contact"
+    title="Let's Talk About Your Day"
+    subhead="I reply within 24 hours, personally."
+    ctaHref="#inquiry-form"
+    ctaLabel="Let's tell your story"
+  />
+
+  <section class="section process">
+    <div class="wrap process__grid">
+      <div>
+        <p class="label process__eyebrow">What happens next</p>
+        <h2>The booking process</h2>
+      </div>
+      <ol class="process__list">
+        {steps.map((step, i) => (
+          <li>
+            <span class="process__num">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 set:html={step.title} />
+              <p set:html={step.body} />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section--dark section form-section" id="inquiry-form">
+    <div class="wrap form-section__grid">
+      <div>
+        <h2>Send an inquiry</h2>
+        <p class="form-section__reply">We reply within 24 hours.</p>
+        <div class="form-section__proof">
+          <Testimonial onDark />
+        </div>
+      </div>
+
+      <!--
+        Form-handling: wired to Formspree's static-form endpoint (no server required).
+        Replace YOUR_FORM_ID with a real Formspree form ID before launch — sign up free at
+        https://formspree.io, create a form, and swap the action URL below.
+      -->
+      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form__row">
+          <label for="name" class="label">Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" />
+        </div>
+
+        <div class="form__row">
+          <label for="email" class="label">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" />
+        </div>
+
+        <div class="form__row">
+          <label for="event_type" class="label">Event type</label>
+          <select id="event_type" name="event_type" required>
+            <option value="">Select one</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Elopement">Elopement</option>
+            <option value="Portrait">Portrait</option>
+            <option value="Family">Family</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form__row">
+          <label for="event_date" class="label">Date <span class="form__optional">(optional)</span></label>
+          <input id="event_date" name="event_date" type="date" />
+        </div>
+
+        <button type="submit" class="cta cta--on-dark form__submit">Let's tell your story</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cta {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 40px;
+    border: 1px solid var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-ivory);
+    cursor: pointer;
+    transition: background-color 0.25s var(--ease-out-quart);
+  }
+
+  .cta:hover {
+    background: var(--color-cinematic-dark);
+  }
+
+  .cta--on-dark {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    border-color: var(--color-ivory);
+  }
+
+  .cta--on-dark:hover {
+    background: var(--color-ivory-deep);
+  }
+
+  .process__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--space-lg);
+  }
+
+  @media (max-width: 800px) {
+    .process__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .process__eyebrow {
+    color: var(--color-dusty-blue-deep);
+    margin-bottom: var(--space-xs);
+  }
+
+  .process h2 {
+    max-width: 20ch;
+  }
+
+  .process__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .process__list li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-sm);
+    border-top: 1px solid var(--color-sage-deep);
+    padding-top: var(--space-md);
+  }
+
+  .process__num {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-dusty-blue-deep);
+  }
+
+  .process__list h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .process__list p {
+    opacity: 0.8;
+  }
+
+  .form-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .form-section__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-section__reply {
+    opacity: 0.8;
+    margin: var(--space-sm) 0 var(--space-md);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    background: var(--color-cinematic-dark-deep);
+    padding: var(--space-lg);
+  }
+
+  .form__row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .form__row label {
+    color: var(--color-ivory-on-dark);
+    opacity: 0.7;
+  }
+
+  .form__optional {
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .form input,
+  .form select {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    border: 1px solid var(--color-sage-deep);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+  }
+
+  .form input:focus-visible,
+  .form select:focus-visible {
+    border-color: var(--color-dusty-blue-deep);
+  }
+
+  .form__submit {
+    margin-top: var(--space-sm);
+    align-self: flex-start;
+  }
+</style>

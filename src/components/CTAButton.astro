@@ -1,0 +1,73 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost';
+  onDark?: boolean;
+  label?: string;
+  class?: string;
+}
+
+const { href, variant = 'primary', onDark = false, label = "Let's tell your story", class: className = '' } = Astro.props;
+---
+
+<a href={href} class:list={['cta', `cta--${variant}`, { 'cta--on-dark': onDark }, className]}>
+  {label}
+</a>
+
+<style>
+  .cta {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 40px;
+    border-radius: var(--radius-none);
+    transition: background-color 0.25s var(--ease-out-quart), color 0.25s var(--ease-out-quart), border-color 0.25s var(--ease-out-quart);
+  }
+
+  .cta--primary {
+    background: var(--color-ink);
+    color: var(--color-ivory);
+    border: 1px solid var(--color-ink);
+  }
+
+  .cta--primary:hover {
+    background: var(--color-cinematic-dark);
+    border-color: var(--color-cinematic-dark);
+  }
+
+  .cta--ghost {
+    background: transparent;
+    color: var(--color-ink);
+    border: 1px solid var(--color-ink);
+  }
+
+  .cta--ghost:hover {
+    background: var(--color-ink);
+    color: var(--color-ivory);
+  }
+
+  .cta--on-dark.cta--primary {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    border-color: var(--color-ivory);
+  }
+
+  .cta--on-dark.cta--primary:hover {
+    background: var(--color-ivory-deep);
+  }
+
+  .cta--on-dark.cta--ghost {
+    background: transparent;
+    color: var(--color-ivory-on-dark);
+    border-color: var(--color-ivory-on-dark);
+  }
+
+  .cta--on-dark.cta--ghost:hover {
+    background: var(--color-ivory-on-dark);
+    color: var(--color-cinematic-dark);
+  }
+</style>

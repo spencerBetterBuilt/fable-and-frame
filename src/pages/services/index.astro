@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+import Testimonial from '../../components/Testimonial.astro';
+
+const tiers = [
+  {
+    name: 'Weddings',
+    price: '[Starting price — TBD]',
+    summary: 'Full-day coverage for your wedding, from getting-ready light through the last dance.',
+    includes: [
+      'A pre-wedding planning call to build a timeline that protects real moments, not just photo-ops',
+      'Full-day coverage, plus a second shooter for larger weddings',
+      'A private online gallery for downloading, sharing, and ordering prints',
+      'Every image edited in Fable & Frame’s signature style — no generic presets',
+    ],
+  },
+  {
+    name: 'Elopements',
+    price: '[Starting price — TBD]',
+    summary: 'A few unhurried hours built around the two of you and the landscape you choose.',
+    includes: [
+      'Help scouting a location around Montgomery, The Woodlands, or further into the Hill Country',
+      'A few hours of relaxed, walking-and-talking coverage — no rigid shot list',
+      'A private online gallery, fully edited',
+      'Optional add-on for a small ceremony officiant referral',
+    ],
+  },
+  {
+    name: 'Portraits',
+    price: '[Starting price — TBD]',
+    summary: 'For couples, milestones, or solo portraits that still feel like you, not a studio backdrop.',
+    includes: [
+      'A one-hour session at a location we choose together',
+      'Guided, not stiff-posed — direction that gives you something to do, not hold',
+      'A private online gallery, fully edited',
+    ],
+  },
+  {
+    name: 'Family',
+    price: '[Starting price — TBD]',
+    summary: 'Real family texture over a lineup of forced smiles — including the kids who won’t cooperate.',
+    includes: [
+      'A relaxed session built around your family’s actual rhythm, not a rigid pose list',
+      'Coverage sized to your family — extended family sessions available',
+      'A private online gallery, fully edited',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Wedding & Portrait Photography Pricing | Fable & Frame Studios | Montgomery, TX"
+  description="Starting pricing and what's included for wedding, elopement, portrait, and family photography with Fable & Frame Studios, serving Montgomery, The Woodlands, Conroe & Houston, TX."
+>
+  <PageHero
+    placeholderLabel="Services hero photo — pending"
+    eyebrow="Services & Pricing"
+    title="Wedding & Portrait Photography Pricing in Montgomery, TX"
+    subhead="A real conversation first — pricing scales with coverage and deliverables."
+  />
+
+  <section class="section tiers">
+    <div class="wrap">
+      {tiers.map((tier, i) => (
+        <div class="tier">
+          <PlaceholderImage label={`${tier.name} photo`} aspect="4 / 5" class="tier__image" />
+          <div class="tier__heading">
+            <h2>{tier.name}</h2>
+            <p class="tier__price">{tier.price}</p>
+          </div>
+          <div class="tier__body">
+            <p class="tier__summary">{tier.summary}</p>
+            <ul class="tier__includes">
+              {tier.includes.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          {i === 0 && (
+            <div class="tier__proof">
+              <Testimonial />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section--dark section cta-mid">
+    <div class="wrap cta-mid__inner">
+      <h2>Not sure which fits?</h2>
+      <p>Tell me about your day and I'll help you figure out the right coverage — no pressure.</p>
+      <CTAButton href="/contact/" onDark />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tiers .wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tier {
+    display: grid;
+    grid-template-columns: 160px 1fr 1.6fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-top: 1px solid var(--color-sage-deep);
+    align-items: start;
+  }
+
+  .tier :global(.tier__image) {
+    width: 100%;
+  }
+
+  @media (max-width: 800px) {
+    .tier {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .tier :global(.tier__image) {
+      max-width: 160px;
+    }
+  }
+
+  .tier__price {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-top: var(--space-xs);
+    color: var(--color-dusty-blue-deep);
+  }
+
+  .tier__summary {
+    margin-bottom: var(--space-sm);
+    opacity: 0.85;
+  }
+
+  .tier__includes {
+    margin: 0;
+    padding-left: 1.1em;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .tier__proof {
+    grid-column: 1 / -1;
+    margin-top: var(--space-sm);
+  }
+
+  .cta-mid__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// PLACEHOLDER — replace with the real Pixieset client gallery subdomain once confirmed.
+const pixiesetUrl = 'https://fableandframestudios.pixieset.com';
+---
+
+<BaseLayout
+  title="Client Login | Fable & Frame Studios"
+  description="Access your private Fable & Frame Studios client gallery, hosted on Pixieset."
+  noindex
+>
+  <section class="section login">
+    <div class="wrap login__inner">
+      <p class="label login__eyebrow">Client Login</p>
+      <h1>Your Gallery Lives on Pixieset</h1>
+      <p class="login__body">
+        Client galleries, proofing, and downloads are hosted on Pixieset, not on this site. Use the
+        link below to log in and view your photos.
+      </p>
+      <a class="cta" href={pixiesetUrl} rel="noopener">Go to your client gallery</a>
+      <p class="login__help">
+        Trouble finding your gallery link? Reach out at <a href="/contact/">/contact/</a> and we'll
+        resend it.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .login {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .login__inner {
+    max-width: 56ch;
+  }
+
+  .login__eyebrow {
+    color: var(--color-sage-deep);
+    margin-bottom: var(--space-xs);
+  }
+
+  .login h1 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .login__body {
+    opacity: 0.85;
+    margin-bottom: var(--space-md);
+  }
+
+  .cta {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 40px;
+    border: 1px solid var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-ivory);
+    transition: background-color 0.25s var(--ease-out-quart);
+  }
+
+  .cta:hover {
+    background: var(--color-cinematic-dark);
+  }
+
+  .login__help {
+    margin-top: var(--space-md);
+    opacity: 0.65;
+  }
+</style>

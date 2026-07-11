@@ -1,0 +1,44 @@
+---
+// No real client testimonials exist in this repo yet. This renders an explicitly-labeled
+// placeholder rather than a fabricated quote — swap in real testimonials before launch.
+interface Props {
+  onDark?: boolean;
+}
+
+const { onDark = false } = Astro.props;
+---
+
+<div class:list={['testimonial', { 'testimonial--on-dark': onDark }]}>
+  <p class="label testimonial__flag">Real client testimonial — pending</p>
+  <p class="testimonial__body">
+    This spot is reserved for a real couple's words once Madyson has testimonials to share — not a
+    placeholder quote dressed up to look like one.
+  </p>
+</div>
+
+<style>
+  .testimonial {
+    padding: var(--space-md);
+    border: 1px solid var(--color-sage-deep);
+    background: var(--color-ivory-deep);
+  }
+
+  .testimonial--on-dark {
+    border-color: var(--color-dusty-blue-deep);
+    background: var(--color-cinematic-dark-deep);
+  }
+
+  .testimonial__flag {
+    color: var(--color-sage-deep);
+    margin-bottom: var(--space-xs);
+  }
+
+  .testimonial--on-dark .testimonial__flag {
+    color: var(--color-dusty-blue);
+  }
+
+  .testimonial__body {
+    opacity: 0.75;
+    font-style: normal;
+  }
+</style>

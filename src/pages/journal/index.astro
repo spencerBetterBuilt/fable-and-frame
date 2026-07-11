@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+
+const posts = (await getCollection('journal')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Wedding Planning Journal | Fable & Frame Studios | Montgomery, TX"
+  description="Planning notes, venue guides, and decision-support posts for couples planning a wedding or elopement around Montgomery, The Woodlands, Conroe & Houston, TX."
+>
+  <PageHero
+    placeholderLabel="Journal hero photo — pending"
+    eyebrow="Journal"
+    title="Planning Notes for Montgomery & Houston Couples"
+  />
+
+  <section class="section post-list">
+    <div class="wrap post-list__grid">
+      {posts.map((post) => (
+        <a href={`/journal/${post.slug}/`} class="post-card">
+          <PlaceholderImage label={post.data.heroAlt} aspect="4 / 3" />
+          <p class="label post-card__pillar">{post.data.pillar.replace('-', ' ')}</p>
+          <h2>{post.data.title}</h2>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .post-list__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  @media (max-width: 800px) {
+    .post-list__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-decoration: none;
+  }
+
+  .post-card__pillar {
+    color: var(--color-dusty-blue-deep);
+  }
+
+  .post-card h2 {
+    max-width: 30ch;
+  }
+</style>

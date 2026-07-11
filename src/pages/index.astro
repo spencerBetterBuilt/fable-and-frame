@@ -1,0 +1,356 @@
+---
+import { Picture } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAButton from '../components/CTAButton.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import Testimonial from '../components/Testimonial.astro';
+import heroImage from '../assets/photos/getaway-car-wedding.jpg';
+
+const posts = (await getCollection('journal'))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 2);
+---
+
+<BaseLayout
+  title="Wedding Photographer in Montgomery, TX | Fable & Frame Studios"
+  description="Fable & Frame Studios is Madyson Call's wedding, elopement, and portrait photography studio in Montgomery, TX, serving The Woodlands, Conroe & Houston with genuine, story-driven imagery."
+  transparentNav
+>
+  <section class="hero">
+    <Picture
+      src={heroImage}
+      alt="A bride waves out the window of a vintage white convertible as it pulls away from a rustic barn wedding venue at dusk near Montgomery, TX"
+      formats={['avif', 'webp']}
+      widths={[640, 1024, 1600, 2400]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="hero__image"
+    />
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+
+    <div class="hero__content wrap">
+      <h1>Wedding Photographer in Montgomery, TX</h1>
+      <p class="hero__body">
+        Genuine, unposed love stories — photographed across Montgomery, The Woodlands, Conroe, and
+        greater Houston.
+      </p>
+      <CTAButton href="/contact/" onDark />
+    </div>
+  </section>
+
+  <section class="section intro">
+    <div class="wrap intro__grid">
+      <div>
+        <p class="label intro__eyebrow">Fable &amp; Frame Studios</p>
+        <h2>Photographed like it actually happened — because it did.</h2>
+      </div>
+      <p class="intro__body">
+        I'm Madyson Call, shooting real, unscripted love stories since 2017 — not stiff, posed
+        formals.
+      </p>
+      <CTAButton href="/about/" variant="ghost" label="Meet Madyson" />
+    </div>
+  </section>
+
+  <section class="section categories">
+    <div class="wrap categories__heading">
+      <p class="label categories__eyebrow">Explore the work</p>
+      <h2>Weddings, Elopements, Portraits &amp; Family</h2>
+    </div>
+
+    <div class="breakout">
+      <div class="category-grid">
+        <a href="/portfolio/#weddings" class="category-grid__item category-grid__item--large">
+          <Picture
+            src={heroImage}
+            alt="Bride's arm out the window of a vintage convertible leaving a Montgomery, TX wedding venue"
+            formats={['avif', 'webp']}
+            widths={[480, 960]}
+            sizes="(max-width: 800px) 100vw, 50vw"
+            loading="lazy"
+          />
+          <span class="label category-grid__label">Weddings</span>
+        </a>
+
+        <a href="/portfolio/#elopements" class="category-grid__item">
+          <PlaceholderImage label="Elopement portfolio photo" aspect="1 / 1" />
+          <span class="label category-grid__label">Elopements</span>
+        </a>
+
+        <a href="/portfolio/#portraits" class="category-grid__item">
+          <PlaceholderImage label="Portrait portfolio photo" aspect="1 / 1" />
+          <span class="label category-grid__label">Portraits</span>
+        </a>
+
+        <a href="/portfolio/#family" class="category-grid__item category-grid__item--wide">
+          <PlaceholderImage label="Family portfolio photo" aspect="16 / 9" />
+          <span class="label category-grid__label">Family</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--dark section cta-banner">
+    <div class="wrap cta-banner__inner">
+      <h2>Let's tell your story.</h2>
+      <p class="cta-banner__body">
+        Tell me about the two of you, your date, and where you're picturing it — I reply within 24
+        hours.
+      </p>
+      <CTAButton href="/contact/" onDark />
+    </div>
+  </section>
+
+  <section class="section proof">
+    <div class="wrap">
+      <p class="label proof__eyebrow">What clients say</p>
+      <h2>Trusted by couples across Montgomery &amp; Houston</h2>
+      <div class="proof__grid">
+        <Testimonial />
+        <Testimonial />
+      </div>
+    </div>
+  </section>
+
+  <section class="section journal-teaser">
+    <div class="wrap">
+      <p class="label journal-teaser__eyebrow">From the journal</p>
+      <h2>Planning notes, from behind the camera</h2>
+      <div class="journal-teaser__grid">
+        {posts.map((post) => (
+          <a href={`/journal/${post.slug}/`} class="journal-teaser__card">
+            <PlaceholderImage label={post.data.heroAlt} aspect="16 / 10" />
+            <h3>{post.data.title}</h3>
+          </a>
+        ))}
+      </div>
+      <CTAButton href="/journal/" variant="ghost" label="Read the journal" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to top,
+      oklch(10% 0.01 250 / 0.85) 0%,
+      oklch(10% 0.01 250 / 0.35) 45%,
+      oklch(10% 0.01 250 / 0.05) 75%
+    );
+  }
+
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 3;
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+    color: var(--color-ivory-on-dark);
+  }
+
+  .hero__content h1 {
+    color: var(--color-ivory-on-dark);
+    max-width: 18ch;
+  }
+
+  .hero__body {
+    margin: var(--space-sm) 0 var(--space-md);
+    max-width: 42ch;
+    font-size: 1.125rem;
+  }
+
+  .intro__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .intro__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+
+  .intro__eyebrow {
+    color: var(--color-sage-deep);
+    margin-bottom: var(--space-xs);
+  }
+
+  .intro__body {
+    margin-bottom: var(--space-md);
+  }
+
+  .categories__eyebrow {
+    color: var(--color-dusty-blue-deep);
+    margin-bottom: var(--space-xs);
+  }
+
+  .categories h2 {
+    max-width: 32ch;
+  }
+
+  .categories__heading {
+    margin-bottom: var(--space-lg);
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 300px;
+    gap: var(--space-sm);
+    padding-inline: var(--space-md);
+  }
+
+  @media (max-width: 640px) {
+    .category-grid {
+      padding-inline: var(--space-sm);
+    }
+  }
+
+  .category-grid__item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .category-grid__item--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .category-grid__item--wide {
+    grid-column: span 2;
+  }
+
+  .category-grid__item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out-quart);
+  }
+
+  .category-grid__item:hover :global(img) {
+    transform: scale(1.03);
+  }
+
+  .category-grid__item :global(.placeholder) {
+    height: 100%;
+  }
+
+  .category-grid__label {
+    position: absolute;
+    left: var(--space-sm);
+    bottom: var(--space-sm);
+    color: var(--color-ivory);
+    background: oklch(10% 0.01 250 / 0.55);
+    padding: 6px 12px;
+  }
+
+  @media (max-width: 800px) {
+    .category-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 160px;
+    }
+
+    .category-grid__item--large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+
+  .cta-banner__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .cta-banner__body {
+    max-width: 46ch;
+    opacity: 0.85;
+  }
+
+  .proof__eyebrow {
+    color: var(--color-sage-deep);
+    margin-bottom: var(--space-xs);
+  }
+
+  .proof h2 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .proof__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  @media (max-width: 800px) {
+    .proof__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .journal-teaser__eyebrow {
+    color: var(--color-dusty-blue-deep);
+    margin-bottom: var(--space-xs);
+  }
+
+  .journal-teaser h2 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .journal-teaser__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  @media (max-width: 800px) {
+    .journal-teaser__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .journal-teaser__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-decoration: none;
+  }
+</style>

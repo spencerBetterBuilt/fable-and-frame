@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+import Testimonial from '../../components/Testimonial.astro';
+import madyson from '../../assets/photos/madyson-with-camera.png';
+---
+
+<BaseLayout
+  title="Meet Madyson | Wedding Photographer in Montgomery, TX | Fable & Frame"
+  description="Meet Madyson Call, the photographer behind Fable & Frame Studios — shooting genuine, story-driven weddings and portraits around Montgomery, The Woodlands & Conroe, TX since 2017."
+>
+  <PageHero
+    image={madyson}
+    alt="Madyson Call, photographer and owner of Fable & Frame Studios, seated with her camera against a weathered wood backdrop"
+    eyebrow="Meet Madyson"
+    title="Your Wedding Photographer in Montgomery, TX"
+    subhead="Shooting genuine, unposed love stories since 2017."
+    ctaHref="/contact/"
+    ctaLabel="Let's tell your story"
+    textPosition="below"
+  />
+
+  <section class="section story">
+    <div class="wrap story__grid">
+      <p>
+        I picked up a camera casually, then obsessively — what kept me in it was watching a couple
+        stop performing and just be together for a second. Protecting that second is the whole job.
+      </p>
+    </div>
+  </section>
+
+  <div class="breakout">
+    <PlaceholderImage label="Madyson at work on a wedding day" aspect="21 / 9" />
+  </div>
+
+  <section class="section--dark section philosophy">
+    <div class="wrap">
+      <h2>How I shoot</h2>
+      <div class="philosophy__grid">
+        <div>
+          <h3>Unposed over stiff</h3>
+          <p>A place to stand, something to do — not a pose to hold.</p>
+        </div>
+        <div>
+          <h3>Story over checklist</h3>
+          <p>The frames you'll print are usually the ones nobody planned.</p>
+        </div>
+        <div>
+          <h3>Presence over control</h3>
+          <p>Close enough to catch it, quiet enough to be forgotten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section proof">
+    <div class="wrap">
+      <p class="label proof__eyebrow">In their words</p>
+      <div class="proof__grid">
+        <Testimonial />
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-mid">
+    <div class="wrap cta-mid__inner">
+      <h2>Let's tell your story.</h2>
+      <CTAButton href="/contact/" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .story__grid {
+    max-width: 60ch;
+  }
+
+  .philosophy__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 800px) {
+    .philosophy__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+
+  .philosophy__grid h3 {
+    margin-bottom: var(--space-xs);
+    color: var(--color-ivory-on-dark);
+  }
+
+  .philosophy__grid p {
+    opacity: 0.85;
+  }
+
+  .proof__eyebrow {
+    color: var(--color-sage-deep);
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-mid__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+</style>

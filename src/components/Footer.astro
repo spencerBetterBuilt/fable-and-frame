@@ -1,0 +1,99 @@
+---
+import CTAButton from './CTAButton.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer section--dark section">
+  <div class="wrap footer__grid">
+    <div class="footer__intro">
+      <p class="footer__mark">Fable &amp; Frame</p>
+      <h2>Let's tell your story.</h2>
+      <p class="footer__body">
+        Wedding, elopement, portrait, and family photography based in Montgomery, TX — serving The
+        Woodlands, Conroe, and greater Houston.
+      </p>
+      <CTAButton href="/contact/" onDark class="footer__cta" />
+    </div>
+
+    <nav class="footer__links" aria-label="Footer">
+      <p class="label footer__heading">Site</p>
+      <a href="/about/">About</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/services/">Services</a>
+      <a href="/journal/">Journal</a>
+      <a href="/contact/">Contact</a>
+      <a href="/client-login/">Client Login</a>
+    </nav>
+
+    <div class="footer__contact">
+      <p class="label footer__heading">Reach Madyson</p>
+      <p>[PLACEHOLDER EMAIL ADDRESS]</p>
+      <p>[PLACEHOLDER PHONE NUMBER]</p>
+      <p class="footer__reply">We reply within 24 hours.</p>
+    </div>
+  </div>
+
+  <div class="wrap footer__bottom">
+    <p class="label">&copy; {year} Fable &amp; Frame Studios. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (max-width: 800px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+
+  .footer__mark {
+    font-family: var(--font-display);
+    font-size: var(--text-title);
+    margin: 0 0 var(--space-sm);
+    opacity: 0.8;
+  }
+
+  .footer__body {
+    margin: var(--space-sm) 0 var(--space-md);
+    max-width: 42ch;
+    opacity: 0.85;
+  }
+
+  .footer__links,
+  .footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .footer__links a,
+  .footer__contact p {
+    text-decoration: none;
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  .footer__heading {
+    opacity: 0.5;
+    margin-bottom: var(--space-xs);
+  }
+
+  .footer__reply {
+    margin-top: var(--space-xs);
+    opacity: 0.6;
+  }
+
+  .footer__bottom {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid oklch(95% 0.008 85 / 0.15);
+    opacity: 0.6;
+  }
+</style>

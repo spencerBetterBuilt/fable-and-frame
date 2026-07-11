@@ -1,0 +1,48 @@
+---
+// Explicit stand-in for a real photograph that doesn't exist in this repo yet.
+// Never swap this for stock photography — flag it here and let Madyson's real work fill it in later.
+interface Props {
+  label: string;
+  aspect?: string;
+  onDark?: boolean;
+  class?: string;
+}
+
+const { label, aspect = '4 / 5', onDark = false, class: className = '' } = Astro.props;
+---
+
+<div class:list={['placeholder', { 'placeholder--on-dark': onDark }, className]} style={`aspect-ratio: ${aspect};`} role="img" aria-label={`Placeholder — ${label}`}>
+  <svg viewBox="0 0 48 48" width="28" height="28" fill="none" aria-hidden="true">
+    <rect x="4" y="10" width="40" height="30" rx="0" stroke="currentColor" stroke-width="1.5" />
+    <circle cx="24" cy="25" r="7" stroke="currentColor" stroke-width="1.5" />
+    <rect x="17" y="5" width="10" height="5" stroke="currentColor" stroke-width="1.5" />
+  </svg>
+  <span class="label">{label}</span>
+</div>
+
+<style>
+  .placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    width: 100%;
+    background: var(--color-ivory-deep);
+    color: var(--color-sage-deep);
+    border: 1px solid var(--color-sage-deep);
+    text-align: center;
+    padding: var(--space-sm);
+  }
+
+  .placeholder--on-dark {
+    background: var(--color-cinematic-dark-deep);
+    color: var(--color-dusty-blue);
+    border-color: var(--color-dusty-blue-deep);
+  }
+
+  .placeholder .label {
+    max-width: 22ch;
+    font-size: 0.7rem;
+  }
+</style>

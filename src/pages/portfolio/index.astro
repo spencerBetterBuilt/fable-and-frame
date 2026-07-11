@@ -1,0 +1,194 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+import heroImage from '../../assets/photos/getaway-car-wedding.jpg';
+
+const categories = [
+  { id: 'weddings', label: 'Weddings' },
+  { id: 'elopements', label: 'Elopements' },
+  { id: 'portraits', label: 'Portraits' },
+  { id: 'family', label: 'Family' },
+];
+
+const items = [
+  { category: 'weddings', real: true, span: 'large' },
+  { category: 'weddings', real: false, span: 'normal' },
+  { category: 'weddings', real: false, span: 'normal' },
+  { category: 'elopements', real: false, span: 'wide' },
+  { category: 'elopements', real: false, span: 'normal' },
+  { category: 'elopements', real: false, span: 'normal' },
+  { category: 'portraits', real: false, span: 'normal' },
+  { category: 'portraits', real: false, span: 'large' },
+  { category: 'family', real: false, span: 'wide' },
+  { category: 'family', real: false, span: 'normal' },
+];
+---
+
+<BaseLayout
+  title="Wedding, Elopement & Portrait Portfolio | Fable & Frame Studios | Montgomery, TX"
+  description="Browse wedding, elopement, portrait, and family photography from Fable & Frame Studios, shot across Montgomery, The Woodlands, Conroe & Houston, TX."
+>
+  <PageHero
+    image={heroImage}
+    alt="Bride waves out the window of a vintage white convertible leaving a Montgomery, TX barn wedding at dusk"
+    eyebrow="Portfolio"
+    title="Wedding & Portrait Photography Across Montgomery & Houston"
+  />
+
+  <section class="section gallery-section">
+    <div class="wrap">
+      <div class="filters" role="tablist" aria-label="Filter portfolio by category" data-filters>
+        <button type="button" class="label filters__btn is-active" data-filter="all">All</button>
+        {categories.map((cat) => (
+          <button type="button" class="label filters__btn" data-filter={cat.id} id={cat.id}>{cat.label}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="breakout">
+      <div class="gallery" data-gallery>
+        {items.map((item) =>
+          item.real ? (
+            <div class={`gallery__item gallery__item--${item.span}`} data-category={item.category}>
+              <Picture
+                src={heroImage}
+                alt="Bride waves out the window of a vintage white convertible leaving a Montgomery, TX barn wedding at dusk"
+                formats={['avif', 'webp']}
+                widths={[480, 960]}
+                sizes="(max-width: 800px) 100vw, 50vw"
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div class={`gallery__item gallery__item--${item.span}`} data-category={item.category}>
+              <PlaceholderImage
+                label={`${item.category[0].toUpperCase()}${item.category.slice(1)} portfolio photo — pending`}
+                aspect={item.span === 'wide' ? '16 / 9' : '4 / 5'}
+              />
+            </div>
+          )
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--dark section cta-mid">
+    <div class="wrap cta-mid__inner">
+      <h2>Like what you see?</h2>
+      <p>This is a fraction of the work — let's talk about your day.</p>
+      <CTAButton href="/contact/" onDark />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .filters {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .filters__btn {
+    background: none;
+    border: none;
+    border-bottom: 1px solid transparent;
+    padding: 0 0 var(--space-xs);
+    cursor: pointer;
+    color: var(--color-ink);
+    opacity: 0.55;
+  }
+
+  .filters__btn.is-active {
+    opacity: 1;
+    border-bottom-color: var(--color-ink);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 320px;
+    gap: var(--space-sm);
+    padding-inline: var(--space-md);
+  }
+
+  @media (max-width: 640px) {
+    .gallery {
+      padding-inline: var(--space-sm);
+    }
+  }
+
+  .gallery__item {
+    overflow: hidden;
+  }
+
+  .gallery__item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery__item :global(.placeholder) {
+    height: 100%;
+  }
+
+  .gallery__item--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .gallery__item--wide {
+    grid-column: span 2;
+  }
+
+  .gallery__item.is-hidden {
+    display: none;
+  }
+
+  @media (max-width: 800px) {
+    .gallery {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 200px;
+    }
+  }
+
+  .cta-mid__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+</style>
+
+<script>
+  const filterBar = document.querySelector('[data-filters]');
+  const gallery = document.querySelector('[data-gallery]');
+
+  if (filterBar && gallery) {
+    const buttons = filterBar.querySelectorAll('[data-filter]');
+    const items = gallery.querySelectorAll('[data-category]');
+
+    const applyFilter = (filter: string) => {
+      items.forEach((item) => {
+        const match = filter === 'all' || item.getAttribute('data-category') === filter;
+        item.classList.toggle('is-hidden', !match);
+      });
+      buttons.forEach((btn) => {
+        btn.classList.toggle('is-active', btn.getAttribute('data-filter') === filter);
+      });
+    };
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => applyFilter(btn.getAttribute('data-filter') ?? 'all'));
+    });
+
+    const hash = window.location.hash.replace('#', '');
+    if (hash && ['weddings', 'elopements', 'portraits', 'family'].includes(hash)) {
+      applyFilter(hash);
+    }
+  }
+</script>
