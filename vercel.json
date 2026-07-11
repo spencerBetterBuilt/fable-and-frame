@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/wedding-photography-the-woodlands", "destination": "/", "permanent": true },
+    { "source": "/wedding-photography-the-woodlands/", "destination": "/", "permanent": true },
+    { "source": "/wedding-photography-conroe", "destination": "/", "permanent": true },
+    { "source": "/wedding-photography-conroe/", "destination": "/", "permanent": true },
+    { "source": "/wedding-photography-houston", "destination": "/", "permanent": true },
+    { "source": "/wedding-photography-houston/", "destination": "/", "permanent": true }
+  ]
+}

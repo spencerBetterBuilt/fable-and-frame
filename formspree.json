@@ -1,0 +1,10 @@
+{
+  "forms": {
+    "contact": {
+      "name": "Contact Form",
+      "actions": [
+        { "type": "email", "to": "mady@fableandframestudio.com" }
+      ]
+    }
+  }
+}
