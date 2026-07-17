@@ -10,7 +10,7 @@ Engaged couples, eloping couples, and families in Montgomery, TX and the greater
 
 ## Product Purpose
 
-A production website for Fable & Frame Studios (photographer Madyson Call) that ranks locally on Google for photography search intent and converts visitors into booked inquiries — without looking or feeling like a commodity vendor. Success is measured on two fronts simultaneously: emotionally compelling enough to feel like a serious photographic artist's site, and structurally engineered (SEO + performance + conversion paths) to actually generate qualified inquiries.
+A production website for Fable and Frame Studio (photographer Madyson Call) that ranks locally on Google for photography search intent and converts visitors into booked inquiries — without looking or feeling like a commodity vendor. Success is measured on two fronts simultaneously: emotionally compelling enough to feel like a serious photographic artist's site, and structurally engineered (SEO + performance + conversion paths) to actually generate qualified inquiries.
 
 ## Brand Personality
 

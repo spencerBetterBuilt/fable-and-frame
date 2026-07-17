@@ -1,10 +1,10 @@
-# Fable & Frame Studios — Marketing Site
+# Fable and Frame Studio — Marketing Site
 
 > This file did not exist at the repo root until 2026-07-10 — the original build brief lived in `fable-frame-claude-code-prompt.md` (which explicitly says it's meant to double as `CLAUDE.md`) but was never copied/renamed here. A separate, misleadingly-named `CLAUDE (1).md` also sits at this root — that one is a stray copy of the **admin app's** original pre-build spec (unrelated to this marketing site), already marked superseded in its own header, and can be ignored. This file is the real one going forward.
 
 ## Role
 
-You are acting as a senior brand-and-web engineer building/maintaining a production website for **Fable & Frame Studios**, a premium wedding/elopement/portrait/family photography business led by photographer Madyson Call, based in Montgomery, TX and serving The Woodlands, Conroe, and greater Houston.
+You are acting as a senior brand-and-web engineer building/maintaining a production website for **Fable and Frame Studio**, a premium wedding/elopement/portrait/family photography business led by photographer Madyson Call, based in Montgomery, TX and serving The Woodlands, Conroe, and greater Houston.
 
 Every decision serves **two equally weighted goals** — neither should quietly win at the other's expense:
 
@@ -98,10 +98,17 @@ The site is built and matches the architecture above: all core pages exist with 
 - **Meta descriptions tightened** on 4 pages (home/about/contact/services) that were running 168–186 characters down to the ~150–160 target.
 - **Open naming question, not yet resolved:** the old live site's actual page title and footer copyright both read "Fable and Frame **Studio**" (singular), not "Studios" — matching the now-confirmed singular domain. This new site's brand references (page titles, `schema.ts` business `name`, footer copyright, `PRODUCT.md`/`DESIGN.md`) are all still "Fable & Frame **Studios**" (plural). Only the *domain* was corrected this session per explicit instruction — whether the brand name itself should also be singular has not been asked or resolved. Worth confirming with Spencer before assuming either way.
 
+### 2026-07-16 — Brand name resolved: "Fable and Frame Studio," no ampersand, singular
+
+Spencer confirmed the display brand name should drop the ampersand entirely and go singular, matching the domain's literal spelling — not "Fable & Frame Studios," but **"Fable and Frame Studio."** Rationale: NAP (Name/Address/Phone) consistency across domain, on-page brand references, and future Google Business Profile listing is a real local-pack SEO ranking factor, and this closes that specific inconsistency (see `GOAL.md`, added same day, for the broader SEO-first priority this was pulled from).
+
+Updated everywhere the brand name appeared: `schema.ts` (`name` + `description` fields), `Nav.astro` and `Footer.astro` (site mark + copyright), every page's `<title>`/meta description (`index`, `about`, `portfolio`, `services`, `contact`, `client-login`, `journal/index`, `journal/[slug]`), the `about` hero alt text, one in-copy mention on `/services/`, one in-copy mention in the `elopement-or-wedding-how-to-choose` journal post, and this file's own title/role line, plus `PRODUCT.md`, `DESIGN.md`, and `IMAGE-SHOTLIST.md`'s headers. The primary CTA copy ("Let's tell your story") is unrelated to this and was untouched. Left alone: `fable-frame-claude-code-prompt.md` (archival original brief, not a living doc) and `CLAUDE (1).md` (already marked superseded, unrelated admin-app scope, per this file's own opening note).
+
+**Not yet done:** Google Business Profile (once it exists) and any other external listings (directories, Pixieset, social bios) should match this exact spelling when set up — not yet audited since most don't exist yet.
+
 **Not yet confirmed/verified**:
 - Whether the sub-2.5s mobile LCP target has been measured against a real Lighthouse/PageSpeed run.
 - Whether `LocalBusiness`/`Photographer` JSON-LD schema (`src/lib/schema.ts`) validates against real schema-testing tools, and whether `aggregateRating` is still correctly stubbed rather than fabricated.
-- Whether the brand name itself is singular "Studio" or plural "Studios" (see note above) — domain is settled, display name is not.
 - Real photography — most portfolio/hero/tier slots are still explicitly-labeled placeholders. Full shot list with dimensions/content briefs lives in `IMAGE-SHOTLIST.md`.
 - Real testimonials — every `Testimonial` instance still renders an explicit "pending" placeholder; no real client quotes exist yet.
 - Pixieset client-portal username/toggle (see above) — needed before `/client-login/` can link anywhere real.

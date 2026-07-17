@@ -1,4 +1,4 @@
-# Image Shot List — Fable & Frame Studios
+# Image Shot List — Fable and Frame Studio
 
 Every slot on the live site that currently renders a labeled `PlaceholderImage` (or is missing an asset entirely), what shape it needs to be, and what it should show. Send me full-resolution originals straight out of editing (JPG/PNG, no need to pre-resize or pre-compress) — Astro's image pipeline generates the AVIF/WebP + responsive sizes automatically at build time.
 
@@ -6,15 +6,19 @@ Every slot on the live site that currently renders a labeled `PlaceholderImage` 
 
 Two real photos already exist in the repo (`getaway-car-wedding.jpg`, `madyson-with-camera.png`) and are already placed on the homepage/about/portfolio hero — you don't need to replace those unless you want a different shot in that spot.
 
+**2026-07-16:** Three more homepage slots filled with real photos from Mady (see table below for what shipped in each). Two other candidates Spencer initially gathered (`Family Portrait.webp`, a posed extended-family group shot, and `Portrait.webp`, a red-backdrop fashion/beauty shot with a cherry prop) were reviewed and **not used** — the family shot didn't match the "candid, not lined-up" brief and the portrait shot's saturated commercial-fashion mood didn't match the brand's editorial-restraint identity. Neither file was added to the repo.
+
+**Open item worth tracking:** the former "Elopements" homepage tile now shows an engagement-ring-reveal photo and is labeled "Engagements" — but `/services/` (priced tier) and `/portfolio/` (filter + category) still say "Elopements," and there's still no real elopement photo in the repo. This was a deliberately narrow, homepage-only change (Spencer's call) — the taxonomy question (does "Engagements" become a real fifth category, replace "Elopements" everywhere, or stay a homepage-only label) is still open.
+
 ---
 
 ## Homepage (`/`)
 
-| # | Slot | Shape | Content |
-|---|------|-------|---------|
-| 1 | Elopements category tile | Square (1:1), min 1200×1200 | An elopement moment — small/no-guest ceremony or an intimate outdoor couple shot, visually distinct from the wedding-barn hero already in place. |
-| 2 | Portraits category tile | Square (1:1), min 1200×1200 | A couple or solo portrait session, natural light, candid rather than stiffly posed. |
-| 3 | Family category tile | Wide (16:9), min 1920×1080 | A real family moment — motion, laughter, kids included — not a lined-up group pose. |
+| # | Slot | Shape | Content | Status |
+|---|------|-------|---------|--------|
+| 1 | Engagements category tile *(was "Elopements")* | Square (1:1), min 1200×1200 | ~~An elopement moment~~ — **filled 2026-07-16** with `engagement-ring-reveal.webp`, a real engagement-ring-reveal/kiss photo from Mady. Still no real *elopement* photo in the repo — see open item above. | Done (recategorized) |
+| 2 | Portraits category tile | Square (1:1), min 1200×1200 | A couple or solo portrait session, natural light, candid rather than stiffly posed. **Filled 2026-07-16** with `airplane-cockpit-portrait.webp` (black-and-white editorial portrait). | Done |
+| 3 | Family category tile | Wide (16:9), min 1920×1080 | A real family moment — motion, laughter, kids included — not a lined-up group pose. **Filled 2026-07-16** with `candid-family-van.webp` (black-and-white candid shot). | Done |
 
 (Journal teaser images reuse the two journal post photos — see Journal section below.)
 

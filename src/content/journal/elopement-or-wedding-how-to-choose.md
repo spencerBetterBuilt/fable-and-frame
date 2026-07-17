@@ -25,7 +25,7 @@ Neither one is the "easy way out" or the "more serious" option. They're just dif
 
 There's no wrong answer here. But usually, by the third question, one direction starts to feel obviously lighter.
 
-## What each looks like with Fable & Frame
+## What each looks like with Fable and Frame
 
 Elopement sessions with me tend to run a few unhurried hours — sunrise or golden hour, one or two locations around Montgomery, The Woodlands, or further out toward the Hill Country if that's the landscape you're after. No timeline binder. Mostly just walking, talking, and me staying quiet enough to catch what actually happens between you.
 

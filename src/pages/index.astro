@@ -6,6 +6,9 @@ import CTAButton from '../components/CTAButton.astro';
 import PlaceholderImage from '../components/PlaceholderImage.astro';
 import Testimonial from '../components/Testimonial.astro';
 import heroImage from '../assets/photos/getaway-car-wedding.jpg';
+import engagementImage from '../assets/photos/engagement-ring-reveal.webp';
+import portraitImage from '../assets/photos/airplane-cockpit-portrait.webp';
+import familyImage from '../assets/photos/candid-family-van.webp';
 
 const posts = (await getCollection('journal'))
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
@@ -13,7 +16,7 @@ const posts = (await getCollection('journal'))
 ---
 
 <BaseLayout
-  title="Wedding Photographer in Montgomery, TX | Fable & Frame Studios"
+  title="Wedding Photographer in Montgomery, TX | Fable and Frame Studio"
   description="Madyson Call's wedding, elopement & portrait photography studio in Montgomery, TX — genuine, story-driven imagery serving The Woodlands, Conroe & Houston."
   transparentNav
 >
@@ -44,7 +47,7 @@ const posts = (await getCollection('journal'))
   <section class="section intro">
     <div class="wrap intro__grid">
       <div>
-        <p class="label intro__eyebrow">Fable &amp; Frame Studios</p>
+        <p class="label intro__eyebrow">Fable and Frame Studio</p>
         <h2>Photographed like it actually happened — because it did.</h2>
       </div>
       <p class="intro__body">
@@ -58,7 +61,7 @@ const posts = (await getCollection('journal'))
   <section class="section categories">
     <div class="wrap categories__heading">
       <p class="label categories__eyebrow">Explore the work</p>
-      <h2>Weddings, Elopements, Portraits &amp; Family</h2>
+      <h2>Weddings, Engagements, Portraits &amp; Family</h2>
     </div>
 
     <div class="breakout">
@@ -75,18 +78,39 @@ const posts = (await getCollection('journal'))
           <span class="label category-grid__label">Weddings</span>
         </a>
 
-        <a href="/portfolio/#elopements" class="category-grid__item">
-          <PlaceholderImage label="Elopement portfolio photo" aspect="1 / 1" />
-          <span class="label category-grid__label">Elopements</span>
+        <a href="/portfolio/" class="category-grid__item">
+          <Picture
+            src={engagementImage}
+            alt="Newly engaged couple embracing outdoors, the bride-to-be's ring visible in the foreground"
+            formats={['avif', 'webp']}
+            widths={[480, 960]}
+            sizes="(max-width: 800px) 100vw, 50vw"
+            loading="lazy"
+          />
+          <span class="label category-grid__label">Engagements</span>
         </a>
 
         <a href="/portfolio/#portraits" class="category-grid__item">
-          <PlaceholderImage label="Portrait portfolio photo" aspect="1 / 1" />
+          <Picture
+            src={portraitImage}
+            alt="Black-and-white editorial portrait of a man in sunglasses leaning out of a vintage airplane cockpit"
+            formats={['avif', 'webp']}
+            widths={[480, 960]}
+            sizes="(max-width: 800px) 100vw, 50vw"
+            loading="lazy"
+          />
           <span class="label category-grid__label">Portraits</span>
         </a>
 
         <a href="/portfolio/#family" class="category-grid__item category-grid__item--wide">
-          <PlaceholderImage label="Family portfolio photo" aspect="16 / 9" />
+          <Picture
+            src={familyImage}
+            alt="Family of five laughing together in the open door of a vintage van during a candid family photography session"
+            formats={['avif', 'webp']}
+            widths={[480, 960]}
+            sizes="(max-width: 800px) 100vw, 50vw"
+            loading="lazy"
+          />
           <span class="label category-grid__label">Family</span>
         </a>
       </div>

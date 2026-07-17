@@ -1,5 +1,5 @@
 ---
-name: Fable & Frame Studios
+name: Fable and Frame Studio
 description: Editorial wedding/elopement/portrait photography site — cool, muted elegance with rare dark-cinematic moments
 colors:
   ivory: "oklch(97% 0.006 85)"
@@ -80,7 +80,7 @@ components:
     padding: "14px 16px"
 ---
 
-# Design System: Fable & Frame Studios
+# Design System: Fable and Frame Studio
 
 ## 1. Overview
 

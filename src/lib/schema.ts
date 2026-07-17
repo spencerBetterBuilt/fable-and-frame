@@ -5,13 +5,13 @@ export function localBusinessSchema(siteUrl: string) {
   return {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'Photographer'],
-    name: 'Fable & Frame Studios',
+    name: 'Fable and Frame Studio',
     telephone: '+1-281-907-3327',
     email: 'mady@fableandframestudio.com',
     url: siteUrl,
     image: `${siteUrl}/images/fable-and-frame-og.jpg`,
     description:
-      "Fable & Frame Studios is Madyson Call's wedding, elopement, portrait, and family photography studio, based in Montgomery, TX and serving The Woodlands, Conroe, and greater Houston.",
+      "Fable and Frame Studio is Madyson Call's wedding, elopement, portrait, and family photography studio, based in Montgomery, TX and serving The Woodlands, Conroe, and greater Houston.",
     priceRange: '$$-$$$',
     areaServed: [
       { '@type': 'City', name: 'Montgomery, TX' },
