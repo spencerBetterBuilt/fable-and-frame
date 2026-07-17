@@ -5,6 +5,10 @@
     { "source": "/wedding-photography-conroe", "destination": "/", "permanent": true },
     { "source": "/wedding-photography-conroe/", "destination": "/", "permanent": true },
     { "source": "/wedding-photography-houston", "destination": "/", "permanent": true },
-    { "source": "/wedding-photography-houston/", "destination": "/", "permanent": true }
+    { "source": "/wedding-photography-houston/", "destination": "/", "permanent": true },
+    { "source": "/pricing", "destination": "/services/", "permanent": true },
+    { "source": "/pricing/", "destination": "/services/", "permanent": true },
+    { "source": "/gallery-:id", "destination": "/portfolio/", "permanent": true },
+    { "source": "/gallery-:id/", "destination": "/portfolio/", "permanent": true }
   ]
 }
